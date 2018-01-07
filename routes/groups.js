@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const knex = require('knex')
 
 router.get('/', (req, res, next) => {
   // code goes here
-  knex('table_name')
+  knex('groups')
     .select('*')
     .orderBy('id')
     .then(data => {
+      console.log(data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
