@@ -13,6 +13,8 @@
     "jade": "~1.11.0",
     "knex": "^0.14.2",
     "morgan": "~1.8.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "pg": "^7.4.1",
     "postgresql": "0.0.1"
   }
