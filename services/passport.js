@@ -14,18 +14,21 @@ passport.use(new GoogleStrategy(
   (accessToken, refreshToken, profile, done) => {
     console.log('access token: ', accessToken)
     console.log('refresh token: ', refreshToken);
-    console.log('profile: ', profile.id);
+    console.log('profile: ', profile);
     let currentUser = {}
 
     knex('users')
-      .where('user_name', profile.id)
+      .where('auth_profile', profile.id)
       .first()
       .then(user => {
         console.log('USER FROM KNEX: ', user);
         if (!user) {
           knex('users')
             .insert({
-              user_name: profile.id
+              first_name: profile.name.givenName,
+              last_name: profile.name.familyName,
+              auth_client: 'google',
+              auth_profile: profile.id
             }, '*')
             .then(newUser => {
               currentUser.id = newUser.id
@@ -41,13 +44,10 @@ passport.use(new GoogleStrategy(
   }
 ))
 
-
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
 
 passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
-
-
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });

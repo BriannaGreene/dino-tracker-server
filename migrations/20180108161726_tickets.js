@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.json('labels')
     table.varchar('team', 255).notNullable()
     table.json('assignees')
-    table.json('priority')
+    table.integer('priority')
     table.timestamps(true, true)
   })
 }
