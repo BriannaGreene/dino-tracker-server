@@ -10,7 +10,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  console.log('user from deserializeUser: ', user);
+  console.log('user from deserializeUser: ', id);
   knex('users')
     .where('id', id)
     .then(user => {
