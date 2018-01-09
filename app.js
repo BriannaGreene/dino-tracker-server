@@ -3,21 +3,17 @@ var path = require('path');
 // var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session')
+var keys = require('./config/keys')
 var bodyParser = require('body-parser');
 const passport = require('passport')
 require('./services/passport')
-
+var app = express();
 var index = require('./routes/index');
 var groups = require('./routes/groups');
 var users = require('./routes/users');
 var tickets = require('./routes/tickets');
 
-var app = express();
-
-// initialize passport
-app.use(passport.initialize());
-
-require('./routes/authRoutes')(app)
 
 // CORS headers to allow access to API from any origin
 app.use(function(req, res, next) {
@@ -26,6 +22,21 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+// cookies session set up
+app.use(cookieSession({
+  maxAge: 30 * 24 * 60 * 60 * 1000,
+  keys: [keys.cookieKey]
+}))
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session())
+
+
+
+// use authentication routes
+require('./routes/authRoutes')(app)
 
 
 

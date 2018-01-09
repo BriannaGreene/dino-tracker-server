@@ -3,7 +3,20 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const keys = require('../config/keys')
 const knex = require('../knex')
 
-passport.initialize()
+// passport.initialize()
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  console.log('user from deserializeUser: ', user);
+  knex('users')
+    .where('id', id)
+    .then(user => {
+      done(null, user)
+    })
+});
 
 passport.use(new GoogleStrategy(
   {
@@ -12,11 +25,6 @@ passport.use(new GoogleStrategy(
     callbackURL: "http://localhost:5000/auth/google/callback"
   },
   (accessToken, refreshToken, profile, done) => {
-    console.log('access token: ', accessToken)
-    console.log('refresh token: ', refreshToken);
-    console.log('profile: ', profile);
-    let currentUser = {}
-
     knex('users')
       .where('auth_profile', profile.id)
       .first()
@@ -31,23 +39,14 @@ passport.use(new GoogleStrategy(
               auth_profile: profile.id
             }, '*')
             .then(newUser => {
-              currentUser.id = newUser.id
+              console.log('NEW USER FROM PASSPORT: ', newUser[0]);
+              done(null, newUser[0])
             })
         }
         else {
-          currentUser.id = user.id
+          console.log('CURRENT USER FROM PASSPORT: ', user);
+          done(null, user)
         }
-      })
-      .then(() => {
-        return done(null, currentUser)
       })
   }
 ))
-
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
-});
