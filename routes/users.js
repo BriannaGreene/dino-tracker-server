@@ -6,6 +6,7 @@ router.get('/', (req, res, next) => {
   // code goes here
   knex('users')
     .select(
+      'id',
       'first_name',
       'last_name',
       'user_name',

@@ -3,7 +3,7 @@ var router = express.Router()
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
-  console.log('HITTING TICKET ROUTE');
+  // console.log('HITTING TICKET ROUTE');
   const user = req.params
   // console.log(req.params);
   // code goes here
@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
     .select('*')
     .orderBy('id')
     .then(data => {
-      console.log('DATA FROM TICKETS: ', data);
+      // console.log('DATA FROM TICKETS: ', data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  console.log('woops wrong route');
+  // console.log('woops wrong route');
   const id = req.params.id
   // code goes here
   knex('tickets')
@@ -33,19 +33,21 @@ router.get('/:id', (req, res, next) => {
 
 router.get('/user/:id', (req, res, next) => {
   // refactor route to use user id instead of 2!!!!!
-  const id = req.params.id
-  console.log('USER ID: ', id);
+  const id = parseInt(req.params.id)
+  // console.log('USER ID: ', id, typeof(id));
   knex('tickets')
     .select('*')
     .then(data => {
+      // console.log(data);
       let userTickets = data.filter(obj => {
         let assignees = obj.assignees.assignees
         for (var i = 0; i < assignees.length; i++) {
-          if (assignees[i] === 2) {
+          if (assignees[i] == id) {
             return assignees[i]
           }
         }
       })
+      // console.log('user tickets: ', userTickets);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(userTickets))
     })

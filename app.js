@@ -13,6 +13,7 @@ var index = require('./routes/index');
 var groups = require('./routes/groups');
 var users = require('./routes/users');
 var tickets = require('./routes/tickets');
+var weather = require('./routes/weather');
 
 
 // CORS headers to allow access to API from any origin
@@ -56,6 +57,7 @@ app.use('/', index);
 app.use('/groups', groups);
 app.use('/users', users);
 app.use('/tickets', tickets);
+app.use('/weather', weather);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
