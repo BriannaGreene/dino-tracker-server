@@ -7,17 +7,19 @@ exports.seed = function(knex, Promise) {
       return knex('users').insert([
         {
           id: 1,
-          first_name: 'Brianna',
-          last_name: 'Greene',
-          admin: true,
-          manager: true,
+          first_name: 'Ken',
+          last_name: 'Kotch',
+          avatar: 2,
+          admin: false,
+          manager: false,
           group_id: 2,
-          team: { "team": ['g49', 'g62', 'g68']}
+          team: { "team": ['g62']}
         },
         {
           id: 2,
           first_name: 'Cat',
-          last_name: 'P',
+          last_name: 'Plevak',
+          avatar: 3,
           admin: false,
           manager: false,
           group_id: 2,
@@ -30,16 +32,77 @@ exports.seed = function(knex, Promise) {
           admin: false,
           manager: false,
           group_id: 2,
-          team: { "team": ['g68']}
+          team: { "team": ['g62']}
         },
         {
           id: 4,
-          first_name: 'Melissa',
-          last_name: 'Utomo',
+          first_name: 'Jonny',
+          last_name: 'Hork',
+          avatar: 4,
           admin: true,
           manager: true,
           group_id: 2,
-          team: { "team": ['g62','g68']}
+          team: { "team": ['g62']}
+        },
+        {
+          id: 5,
+          first_name: 'Jamie',
+          last_name: 'Tanzar',
+          avatar: 5,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
+        },
+        {
+          id: 6,
+          first_name: 'Chris',
+          last_name: 'Smith',
+          avatar: 6,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
+        },
+        {
+          id: 7,
+          first_name: 'Gena',
+          last_name: 'Isreal',
+          avatar: 7,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
+        },
+        {
+          id: 8,
+          first_name: 'Danah',
+          last_name: 'Olivetree',
+          avatar: 8,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
+        },
+        {
+          id: 9,
+          first_name: 'Adam',
+          last_name: 'Neef',
+          avatar: 9,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
+        },
+        {
+          id: 10,
+          first_name: 'Craig',
+          last_name: 'Quincy',
+          avatar: 1,
+          admin: false,
+          manager: false,
+          group_id: 2,
+          team: { "team": ['g62']}
         }
       ]);
     })

@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.varchar('user_name', 255)
     table.varchar('auth_client', 255)
     table.text('auth_profile')
+    table.integer('avatar').notNullable().defaultTo(1)
+    table.json('sticky')
     table.bool('admin').defaultTo(false)
     table.bool('manager').defaultTo(false)
     table.integer('group_id').references('id').inTable('groups').onDelete('cascade')
