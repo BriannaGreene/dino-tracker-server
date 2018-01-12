@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var tickets = require('./routes/tickets');
 var weather = require('./routes/weather');
 const messages = require('./routes/messages')
+const notes = require('./routes/notes')
 
 // CORS headers to allow access to API from any origin
 app.use(function(req, res, next) {
@@ -59,6 +60,7 @@ app.use('/users', users);
 app.use('/tickets', tickets);
 app.use('/weather', weather);
 app.use('/messages', messages);
+app.use('/notes', notes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
