@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           status: 'done',
           labels: { "labels": ["pink", "purple"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [1, 2, 11] }
         },
         {
           id: 2,
@@ -20,14 +20,14 @@ exports.seed = function(knex, Promise) {
           description: 'develop super awesome development skills',
           labels: { "labels": [] },
           team: 'g68',
-          assignees: { "assignees": [3, 4] }
+          assignees: { "assignees": [4, 11] }
         },
         {
           id: 3,
           title: 'get jobs',
           labels: { "labels": [] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [3, 11] }
         },
         {
           id: 4,
@@ -36,7 +36,7 @@ exports.seed = function(knex, Promise) {
           status: 'in progress',
           labels: { "labels": ["red"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11] }
         },
         {
           id: 5,
@@ -45,7 +45,7 @@ exports.seed = function(knex, Promise) {
           status: 'in progress',
           labels: { "labels": ["red", "purple"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11] }
         },
         {
           id: 6,
@@ -54,7 +54,7 @@ exports.seed = function(knex, Promise) {
           status: 'in progress',
           labels: { "labels": ["pink"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11, 9] }
         },
         {
           id: 7,
@@ -63,7 +63,7 @@ exports.seed = function(knex, Promise) {
           status: 'in progress',
           labels: { "labels": [] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11] }
         },
         {
           id: 8,
@@ -72,7 +72,7 @@ exports.seed = function(knex, Promise) {
           status: 'done',
           labels: { "labels": ["pink", "purple"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11, 8] }
         },{
           id: 9,
           title: 'add react router dom',
@@ -80,7 +80,7 @@ exports.seed = function(knex, Promise) {
           status: 'done',
           labels: { "labels": ["yellow"] },
           team: 'g62',
-          assignees: { "assignees": [1, 2, 5] }
+          assignees: { "assignees": [11] }
         }
       ]);
     })
