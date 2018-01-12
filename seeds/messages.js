@@ -9,16 +9,16 @@ exports.seed = function(knex, Promise) {
           message: "first message"},
         { id: 2,
           user_id: 9,
-          teams: "who is using redux for their project"},
+          message: "who is using redux for their project"},
         { id: 3,
           user_id: 7,
-          teams: "I'm using redux!"},
+          message: "I'm using redux!"},
         { id: 4,
           user_id: 1,
-          teams: "More Ken Heads!!"},
+          message: "More Ken Heads!!"},
         { id: 5,
           user_id: 6,
-          teams: "More Ken Mode!!"}
+          message: "More Ken Mode!!"}
       ]);
     })
     .then(() => {

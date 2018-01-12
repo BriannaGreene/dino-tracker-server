@@ -5,12 +5,12 @@
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/dino-tickets-dev'
+    connection: 'postgres://localhost/nimble-dev'
   },
 
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/dino-tickets-test'
+    connection: 'postgres://localhost/nimble-test'
   },
 
   production: {

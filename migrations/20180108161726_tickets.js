@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.text('title').notNullable()
     table.text('description')
     table.varchar('status', 255).notNullable().defaultTo('to do')
-    table.json('labels').notNullable().defaultTo({"labels": []})
+    table.json('labels').notNullable().defaultTo('{"labels": []}')
     table.varchar('team', 255).notNullable()
     table.json('assignees')
     table.integer('priority')
