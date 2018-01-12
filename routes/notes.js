@@ -21,6 +21,7 @@ router.get('/:id', (req, res, next) => {
   knex('notes')
     .select('*')
     .where('user_id', userId)
+    .orderBy('id')
     .then(data => {
       console.log('data from route: ', data);
       res.setHeader('Content-Type', 'application/json')
@@ -45,8 +46,19 @@ router.post('/', (req, res, next) => {
 
 router.patch('/:id', (req, res, next) => {
   const id = req.params.id
-  const { item } = req.body
+  const { note } = req.body
   // code goes here
+  // code goes here
+  knex('notes')
+    .where('id', id)
+    .returning('*')
+    .update({
+      note: note
+    })
+    .then(data => {
+      res.setHeader('Content-Type', 'application/json')
+      res.send(JSON.stringify(data))
+    })
 })
 
 router.delete('/:id', (req, res, next) => {
