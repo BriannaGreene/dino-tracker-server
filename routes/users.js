@@ -10,6 +10,8 @@ router.get('/', (req, res, next) => {
       'first_name',
       'last_name',
       'user_name',
+      'avatar',
+      'sticky',
       'admin',
       'manager',
       'group_id',

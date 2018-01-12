@@ -10,6 +10,7 @@ exports.seed = function(knex, Promise) {
           first_name: 'Ken',
           last_name: 'Kotch',
           avatar: 2,
+          sticky: { "notes": ['this is just a test note', 'hello?', 'call Jenny', 'whas up g62'] },
           admin: false,
           manager: false,
           group_id: 2,
