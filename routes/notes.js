@@ -3,7 +3,6 @@ var router = express.Router();
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
-  // code goes here
   knex('notes')
     .select('*')
     .orderBy('id')
@@ -16,25 +15,18 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const userId = req.params.id
-  // code goes here
-  // code goes here
   knex('notes')
     .select('*')
     .where('user_id', userId)
     .orderBy('id')
     .then(data => {
-      console.log('data from route: ', data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
 })
 
 router.post('/', (req, res, next) => {
-  console.log('SITCKY ROUTE: ', req.body);
   const { note, userId } = req.body
-  console.log('COMING TO STICKY POST ', note);
-  console.log('COMING TO STICKY ID', userId);
-  // code goes here
   knex('notes')
     .insert(
       { note: note, user_id: userId }, '*')
@@ -47,8 +39,6 @@ router.post('/', (req, res, next) => {
 router.patch('/:id', (req, res, next) => {
   const id = req.params.id
   const { note } = req.body
-  // code goes here
-  // code goes here
   knex('notes')
     .where('id', id)
     .returning('*')
@@ -63,8 +53,6 @@ router.patch('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id
-  console.log('COMING TO DELETE:', id);
-  // code goes here
   knex('notes')
     .where('id', id)
     .del()

@@ -3,7 +3,6 @@ var router = express.Router()
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
-  // code goes here
   knex('groups')
     .select('*')
     .orderBy('id')
@@ -16,7 +15,6 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('groups')
     .select('*')
     .where('id', id)
@@ -28,7 +26,6 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { name, teams } = req.body
-  // code goes here
   knex('groups')
     .insert(
       {

@@ -3,15 +3,11 @@ var router = express.Router()
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
-  // console.log('HITTING TICKET ROUTE');
   const user = req.params
-  // console.log(req.params);
-  // code goes here
   knex('tickets')
     .select('*')
     .orderBy('id')
     .then(data => {
-      // console.log('DATA FROM TICKETS: ', data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
@@ -19,7 +15,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  // console.log('woops wrong route');
   const id = req.params.id
   // code goes here
   knex('tickets')

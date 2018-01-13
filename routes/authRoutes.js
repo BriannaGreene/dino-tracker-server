@@ -13,7 +13,6 @@ module.exports = (router) => {
   })
 
   router.get('/api/current_user', (req, res) => {
-    // console.log('user from api/current_user', req.user);
     res.send(req.user)
   })
 }
