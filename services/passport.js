@@ -6,6 +6,7 @@ const knex = require('../knex')
 // passport.initialize()
 
 passport.serializeUser((user, done) => {
+  console.log('SERIALIZE');
   done(null, user.id);
 });
 
@@ -23,13 +24,15 @@ passport.use(new GoogleStrategy(
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: "http://localhost:5000/auth/google/callback"
+    // callbackURL: "http://localhost:3000"
+
   },
   (accessToken, refreshToken, profile, done) => {
     knex('users')
       .where('auth_profile', profile.id)
       .first()
       .then(user => {
-        console.log('USER FROM KNEX: ', user);
+        // console.log('USER FROM KNEX: ', user);
         if (!user) {
           knex('users')
             .insert({

@@ -9,7 +9,8 @@ module.exports = (router) => {
 
   router.get('/api/logout', (req, res) => {
     req.logout()
-    res.send(req.user)
+    // res.send(req.user)
+    res.redirect('http://localhost:3000')
   })
 
   router.get('/api/current_user', (req, res) => {

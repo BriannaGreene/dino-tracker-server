@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 // cookies session set up
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
-  keys: [keys.cookieKey]
+  keys: [keys.cookieKey],
 }))
 
 // initialize passport
