@@ -4,7 +4,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session')
-var keys = require('./config/keys')
+// var keys = require('./config/keys')
 var bodyParser = require('body-parser');
 const passport = require('passport')
 require('./services/passport')
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 // cookies session set up
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
-  keys: [keys.cookieKey],
+  keys: [process.env.COOKIE_KEY],
 }))
 
 // initialize passport
