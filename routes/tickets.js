@@ -87,8 +87,11 @@ router.patch('/:id', (req, res, next) => {
     labels,
     team,
     assignees,
+    hoursComplete,
+    hoursToComplete,
     priority
   } = req.body
+  console.log('REQUEST FROM ROUTE', req.body);
   // code goes here
   knex('tickets')
     .where('id', id)
@@ -100,6 +103,8 @@ router.patch('/:id', (req, res, next) => {
       labels: labels,
       team: team,
       assignees: assignees,
+      hours_complete: hoursComplete,
+      hours_to_complete: hoursToComplete,
       priority: priority
     })
     .then(data => {

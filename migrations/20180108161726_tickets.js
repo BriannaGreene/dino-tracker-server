@@ -7,6 +7,8 @@ exports.up = function(knex, Promise) {
     table.json('labels').notNullable().defaultTo('{"labels": []}')
     table.varchar('team', 255).notNullable()
     table.json('assignees')
+    table.integer('hours_complete').defaultTo(0)
+    table.integer('hours_to_complete').defaultTo(0)
     table.integer('priority')
     table.timestamps(true, true)
   })
