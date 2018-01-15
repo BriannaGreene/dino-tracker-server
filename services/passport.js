@@ -7,10 +7,12 @@ require('dotenv').config()
 // passport.initialize()
 
 passport.serializeUser((user, done) => {
+  console.log('SERIALIZE: ', user.id);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
+  console.log('DESERIALIZE: ', id);
   knex('users')
     .where('id', id)
     .then(user => {
@@ -25,11 +27,13 @@ passport.use(new GoogleStrategy(
     callbackURL: "/auth/google/callback"
   },
   (accessToken, refreshToken, profile, done) => {
+    console.log('GOOGLE STRAT: ', profile.id);
     knex('users')
       .where('auth_profile', profile.id)
       .first()
       .then(user => {
         if (!user) {
+          console.log('NEW USER');
           knex('users')
             .insert({
               first_name: profile.name.givenName,
@@ -42,6 +46,7 @@ passport.use(new GoogleStrategy(
             })
         }
         else {
+          console.log('CURRENT USER', user.id);
           done(null, user)
         }
       })
