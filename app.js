@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-// var favicon = require('serve-favicon');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session')
@@ -83,8 +83,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(5000, function(){
-  console.log('listening on 5000');
-})
+// app.listen(5000, function(){
+//   console.log('listening on 5000');
+// })
 
 module.exports = app;
