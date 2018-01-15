@@ -14,6 +14,7 @@ module.exports = (router) => {
   })
 
   router.get('/api/current_user', (req, res) => {
+    console.log('CURRENT USER FROM BACK END: ', req.user[0]);
     res.send(req.user)
   })
 }
