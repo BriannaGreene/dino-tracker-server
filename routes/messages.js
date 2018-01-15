@@ -21,8 +21,6 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { userId, message } = req.body
-  console.log('user id from post: ', userId);
-  console.log('message from post: ', message);
   // code goes here
   knex('messages')
     .insert({ user_id: userId, message: message },'*')

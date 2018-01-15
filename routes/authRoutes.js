@@ -5,16 +5,15 @@ module.exports = (router) => {
       scope: ['profile', 'email']
   }))
 
-  router.get('/auth/google/callback', passport.authenticate('google'))
+  router.get('/auth/google/callback',
+    passport.authenticate('google', { successRedirect: `${process.env.CLIENT}`, failureRedirect: `${process.env.CLIENT}` }))
 
   router.get('/api/logout', (req, res) => {
     req.logout()
-    // res.send(req.user)
-    res.redirect('http://localhost:3000')
+    res.redirect(`${process.env.CLIENT}`)
   })
 
   router.get('/api/current_user', (req, res) => {
-    console.log('CURRENT USER FROM BACK END: ', req.user[0]);
     res.send(req.user)
   })
 }

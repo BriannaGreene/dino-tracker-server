@@ -18,7 +18,13 @@ exports.seed = function(knex, Promise) {
           message: "More Ken Heads!!"},
         { id: 5,
           user_id: 6,
-          message: "More Ken Mode!!"}
+          message: "More Ken Mode!!"},
+        { id: 6,
+          user_id: 8,
+          message: "Can anyone take some of my tickets?"},
+        { id: 7,
+          user_id: 5,
+          message: "I can!"}
       ]);
     })
     .then(() => {

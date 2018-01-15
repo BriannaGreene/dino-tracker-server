@@ -91,7 +91,6 @@ router.patch('/:id', (req, res, next) => {
     hoursToComplete,
     priority
   } = req.body
-  console.log('REQUEST FROM ROUTE', req.body);
   // code goes here
   knex('tickets')
     .where('id', id)
