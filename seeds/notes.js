@@ -7,27 +7,27 @@ exports.seed = function(knex, Promise) {
       return knex('notes').insert([
         {
           id: 1,
-          note: 'hello my name is Bri, BumbleBri!!',
+          note: 'Hello, my name is Bri, Bri Greene!',
           user_id: 11
         },
         {
           id: 2,
-          note: 'this note is just a test',
+          note: 'Nimble Status: FINISHED!',
           user_id: 11
         },
         {
           id: 3,
-          note: 'I like stickies and I like colors',
+          note: 'how many sticky notes fit on this holder?',
           user_id: 11
         },
         {
           id: 4,
-          note: 'Call Jenny, Bark Bark!!',
+          note: 'Call Jenny, Bark!',
           user_id: 11
         },
         {
           id: 5,
-          note: 'how many sticky notes fit on a sticky note holder?',
+          note: 'make a presentation video',
           user_id: 11
         }
       ]);

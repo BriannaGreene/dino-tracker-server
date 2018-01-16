@@ -58,6 +58,8 @@ router.post('/', (req, res, next) => {
     assignees,
     priority
   } = req.body
+  console.log('ticket route: ', req.body);
+
   // code goes here
   knex('tickets')
     .insert(
@@ -73,6 +75,7 @@ router.post('/', (req, res, next) => {
       '*'
     )
     .then(data => {
+      console.log('data from new ticket: ', data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })

@@ -4,7 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const knex = require('../knex')
 require('dotenv').config()
 
-// passport.initialize()
+passport.initialize()
 
 passport.serializeUser((user, done) => {
   console.log('SERIALIZE: ', user.id);
