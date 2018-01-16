@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session')
-// var keys = require('./config/keys')
 var bodyParser = require('body-parser');
 const passport = require('passport')
 require('./services/passport')
@@ -29,7 +28,6 @@ app.use(function(req, res, next) {
 // cookies session set up
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
-  // keys: [keys.cookieKey],
   keys: [`${process.env.COOKIE_KEY}`],
 
 }))
@@ -38,12 +36,8 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session())
 
-
-
 // use authentication routes
 require('./routes/authRoutes')(app)
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -82,9 +76,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// app.listen(5000, function(){
-//   console.log('listening on 5000');
-// })
 
 module.exports = app;

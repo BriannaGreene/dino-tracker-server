@@ -4,9 +4,6 @@ const DarkSky = require('dark-sky')
 const darksky = new DarkSky(process.env.DARK_SKY)
 
 router.get('/', async (req, res, next) => {
-  // code goes here
-  console.log('hitting weather route');
-
     try {
     const { latitude, longitude } = req.body
     const forecast = await darksky
@@ -55,14 +52,9 @@ router.get('/', async (req, res, next) => {
         }
         res.status(200).json(weather)
       })
-
   } catch (err) {
-    console.log(err);
     next(err)
   }
-
 })
-
-
 
 module.exports = router;

@@ -1,5 +1,3 @@
-// Update with your config settings.
-
 'use strict';
 
 module.exports = {

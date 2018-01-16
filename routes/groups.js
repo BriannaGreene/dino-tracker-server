@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
-  // .catch((err) => next(err))
 })
 
 router.get('/:id', (req, res, next) => {
@@ -43,7 +42,6 @@ router.post('/', (req, res, next) => {
 router.patch('/:id', (req, res, next) => {
   const id = req.params.id
   const { name, team } = req.body
-  // code goes here
   knex('groups')
     .where('id', id)
     .returning('*')
@@ -59,7 +57,6 @@ router.patch('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('groups')
     .where('id', id)
     .del()

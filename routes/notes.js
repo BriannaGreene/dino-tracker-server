@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
-    .catch((err) => next(err))
+    .catch(err => next(err))
 })
 
 router.get('/:id', (req, res, next) => {
@@ -28,8 +28,7 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const { note, userId } = req.body
   knex('notes')
-    .insert(
-      { note: note, user_id: userId }, '*')
+    .insert({ note: note, user_id: userId }, '*')
     .then(data => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
@@ -63,4 +62,4 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
-module.exports = router;
+module.exports = router

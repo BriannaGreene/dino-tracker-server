@@ -11,12 +11,11 @@ router.get('/', (req, res, next) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
-  .catch((err) => next(err))
+    .catch(err => next(err))
 })
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('tickets')
     .select('*')
     .where('id', id)
@@ -27,13 +26,10 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.get('/user/:id', (req, res, next) => {
-  // refactor route to use user id instead of 2!!!!!
   const id = parseInt(req.params.id)
-  // console.log('USER ID: ', id, typeof(id));
   knex('tickets')
     .select('*')
     .then(data => {
-      // console.log(data);
       let userTickets = data.filter(obj => {
         let assignees = obj.assignees.assignees
         for (var i = 0; i < assignees.length; i++) {
@@ -42,7 +38,6 @@ router.get('/user/:id', (req, res, next) => {
           }
         }
       })
-      // console.log('user tickets: ', userTickets);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(userTickets))
     })
@@ -58,9 +53,6 @@ router.post('/', (req, res, next) => {
     assignees,
     priority
   } = req.body
-  console.log('ticket route: ', req.body);
-
-  // code goes here
   knex('tickets')
     .insert(
       {
@@ -75,7 +67,6 @@ router.post('/', (req, res, next) => {
       '*'
     )
     .then(data => {
-      console.log('data from new ticket: ', data);
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
@@ -94,7 +85,6 @@ router.patch('/:id', (req, res, next) => {
     hoursToComplete,
     priority
   } = req.body
-  // code goes here
   knex('tickets')
     .where('id', id)
     .returning('*')
@@ -117,7 +107,6 @@ router.patch('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('tickets')
     .where('id', id)
     .del()

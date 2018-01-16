@@ -3,7 +3,6 @@ var router = express.Router()
 const knex = require('../knex')
 
 router.get('/', (req, res, next) => {
-  // code goes here
   knex('users')
     .select(
       'id',
@@ -22,12 +21,10 @@ router.get('/', (req, res, next) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(data))
     })
-  // .catch((err) => next(err))
 })
 
 router.get('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('users')
     .select('*')
     .where('id', id)
@@ -58,7 +55,6 @@ router.post('/', (req, res, next) => {
     groupId,
     team
   } = req.body
-  // code goes here
   knex('users')
     .insert(
       {
@@ -101,7 +97,6 @@ router.patch('/:id', (req, res, next) => {
     groupId,
     team
   } = req.body
-  // code goes here
   knex('users')
     .where('id', id)
     .returning('*')
@@ -133,7 +128,6 @@ router.patch('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id
-  // code goes here
   knex('users')
     .where('id', id)
     .del()

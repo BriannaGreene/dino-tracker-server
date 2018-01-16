@@ -1,18 +1,15 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-// const keys = require('../config/keys')
 const knex = require('../knex')
 require('dotenv').config()
 
 passport.initialize()
 
 passport.serializeUser((user, done) => {
-  console.log('SERIALIZE: ', user.id);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log('DESERIALIZE: ', id);
   knex('users')
     .where('id', id)
     .then(user => {
@@ -27,7 +24,6 @@ passport.use(new GoogleStrategy(
     callbackURL: "/auth/google/callback"
   },
   (accessToken, refreshToken, profile, done) => {
-    console.log('GOOGLE STRAT: ', profile.id);
     knex('users')
       .where('auth_profile', profile.id)
       .first()
@@ -46,7 +42,6 @@ passport.use(new GoogleStrategy(
             })
         }
         else {
-          console.log('CURRENT USER', user.id);
           done(null, user)
         }
       })
