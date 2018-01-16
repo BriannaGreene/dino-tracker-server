@@ -21,7 +21,24 @@ module.exports = (router) => {
   })
 
   router.get('/api/current_user', (req, res) => {
-    res.send(req.user)
+    console.log('HITTING CURRENT USER ROUTE');
+    console.log('USER: ', req.user);
+    let newUser = [ {
+    id: 11,
+    first_name: 'Bri',
+    last_name: 'Greene',
+    user_name: null,
+    auth_client: 'google',
+    auth_profile: '100281854064436738613',
+    avatar: 1,
+    sticky: { notes: [] },
+    admin: false,
+    manager: false,
+    group_id: null,
+    team: null,
+    created_at: '2018-01-16T00:27:48.113Z',
+    updated_at: '2018-01-16T00:27:48.113Z' } ]
+    res.send(newUser)
   })
 
 }
