@@ -29,7 +29,6 @@ passport.use(new GoogleStrategy(
       .first()
       .then(user => {
         if (!user) {
-          console.log('NEW USER');
           knex('users')
             .insert({
               first_name: profile.name.givenName,

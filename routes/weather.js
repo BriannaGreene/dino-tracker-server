@@ -15,7 +15,6 @@ router.get('/', async (req, res, next) => {
       .then(info => {
         let weather = {}
         if (info) {
-          console.log(info.currently);
           weather = {
             currentSummary: info.currently.summary,
             currentIcon: info.currently.icon,
